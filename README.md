@@ -29,33 +29,36 @@ A Connections game can have a maximum of seven rounds - 3 incorrect guesses, and
 Incorrect guesses score `0`, and correct guesses are scored as such:
 
 
-We calculate a `decay factor := 100 / 7`.
+We calculate a `decay factor := 49 / 7`. We choose `49` to make nice even numbers.
 We take the `round factor := decay factor * (7 - round number - 1)`.
 Then, we calculate `round score = color score * round factor`.
+Finally, we scale by `100 / maximum score` = `100 / 420 = 0.238`.
 
 For example, let's say we guess Green correctly on the second round. 
 This means we have
 - `green score := 2`
-- `decay factor := 100 / 7`
-- `round factor := decay factor * (7 - round number - 1) = 100 / 7 * (7 - 2 - 1) = 100 / 7 * 6 = 85.71`
-- `round score := 2 * 85.71 = 171.43`
+- `decay factor := 49 / 7`
+- `round factor := decay factor * (7 - round number - 1) = 49 / 7 * (7 - 2 - 1) = 49 / 7 * 6 = 42`
+- `round score := 2 * 42 = 84`
+- `scaled := 84 * 0.238 = 20`
 
 Using this methodology, the maximum score is for a game that looks like this:
 ```
-🟪🟪🟪🟪 - 400.00
-🟦🟦🟦🟦 - 257.14
-🟩🟩🟩🟩 - 142.86
-🟨🟨🟨🟨 - 57.14
-Total: 857.14
+🟪🟪🟪🟪 - 46.67
+🟦🟦🟦🟦 - 30.00
+🟩🟩🟩🟩 - 16.67
+🟨🟨🟨🟨 - 6.67
+Total: 100.00
 ```
-The minimum score is for a game that looks like this:
+
+The minimum score for a successful game looks like this:
 ```
 🟦🟨🟪🟨 - 0.00
 🟩🟦🟨🟪 - 0.00
 🟩🟦🟨🟩 - 0.00
-🟨🟨🟨🟨 - 57.14
-🟩🟩🟩🟩 - 85.71
-🟦🟦🟦🟦 - 85.71
-🟪🟪🟪🟪 - 57.14
-Total: 285.71
+🟨🟨🟨🟨 - 6.67
+🟩🟩🟩🟩 - 10.00
+🟦🟦🟦🟦 - 10.00
+🟪🟪🟪🟪 - 6.67
+Total: 33.33
 ```
