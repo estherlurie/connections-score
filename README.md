@@ -12,19 +12,26 @@ Total: 38.33
 ```
 ## Running the program
 Rust must be installed on your machine. If you don't have it, [install instructions are here](https://www.rust-lang.org/tools/install).
-### With stdin
-Run the script with `cargo run`, and paste your results into the command line. Hit enter a couple of times.
 
-
-### With text files
-Paste your NYT Connections results into a .txt file, and invoke the script with
-```rust
-cargo run -- <path_to_file>
+### Install binary
+```
+git clone https://github.com/estherlurie/connections-score.git
+cd connections-score
+cargo install --path .
 ```
 
-You can also score multiple files by simply listing them:
-```rust 
-cargo run -- <path_1> <path_2> ... <path_n>
+#### With stdin
+Invoke the script and past your results. Hit enter a couple of times.
+```sh
+$ connections-score
+Copy + paste your Connections results here:
+```
+
+#### With text files
+Paste your NYT Connections results into a `.txt` file, and invoke the script:
+```sh
+$ connections-score result1.txt result2.txt
+<output>
 ```
 
 ## Methodology
