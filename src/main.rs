@@ -1,6 +1,6 @@
 use std::env;
 use std::fs;
-use std::io::{self, BufRead};
+use std::io;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -10,7 +10,7 @@ fn main() {
         let mut results = String::new();
         loop {
             let mut temp = String::new();
-            if let Ok(_) = io::stdin().read_line(&mut temp) {
+            if io::stdin().read_line(&mut temp).is_ok() {
                 if temp.trim().is_empty() {
                     break;
                 } else {
