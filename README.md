@@ -34,7 +34,7 @@ The score of a round is equal to its color score * a factor `f`.
 Rounds further from the start are scaled down - guessing purple on round 1 is a higher score than guessing it on round 7.
 We multiply `7 - round number` by the score to get a maximum possible score for our scale factor `f`.
 This would be `m := 7*s_p + 6*s_b + 5*s_g + 4*s_y`.
-So `f := 100 * (7 - round number) / m`.
+So `f := (100 / m) * (7 - round number)`.
 Then `s := color score * f`.
 
 For example, let's say we guess Green correctly on the second round (we use zero-index). 
