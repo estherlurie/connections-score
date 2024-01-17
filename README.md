@@ -40,7 +40,8 @@ Then `s := color score * f`.
 For example, let's say we guess Green correctly on the second round (we use zero-index). 
 This means we have
 - `green score := 2`
-- `f := 100 * (7 - 1) / 60 = 10`
+- `m := 7*4 + 6*3 + 5*2 + 4*1 = 60`
+- `f := (100 / m) * (7 - round number) = (100 / 60) * (7 - 1) = (5/3) * 6 = 10`
 - `round score := 2 * 10 = 20`
 
 Using this methodology, the maximum score is for a game that looks like this:
