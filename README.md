@@ -1,6 +1,7 @@
 # Connections Score
 
 ## Running the program
+Rust must be installed on your machine. If you don't have it, [install instructions are here](https://www.rust-lang.org/tools/install).
 ### With stdin
 Run the script with `cargo run`, and paste your results into the command line. Hit enter a couple of times.
 
