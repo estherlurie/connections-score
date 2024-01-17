@@ -1,20 +1,33 @@
 use std::env;
 use std::fs;
+use std::io::{self, BufRead};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() == 1 {
-        println!("Pass in the name of a text file with your Connections results");
-        println!("Exiting");
-        return;
-    }
-
-    for filename in args {
-        if let Ok(file_contents) = fs::read_to_string(filename) {
-            parse_results(&file_contents);
+        println!("Copy + paste your Connections results here:");
+        let mut results = String::new();
+        loop {
+            let mut temp = String::new();
+            if let Ok(_) = io::stdin().read_line(&mut temp) {
+                if temp.trim().is_empty() {
+                    break;
+                } else {
+                    results.push_str(&temp);
+                }
+            } else {
+                break;
+            }
         }
-        println!();
+        parse_results(&results);
+    } else {
+        for filename in args {
+            if let Ok(file_contents) = fs::read_to_string(filename) {
+                parse_results(&file_contents);
+            }
+            println!();
+        }
     }
 }
 
