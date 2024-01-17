@@ -81,3 +81,5 @@ The minimum score for a successful game looks like this:
 🟪🟪🟪🟪 - 6.67
 Total: 33.33
 ```
+
+The actual values of each color score don't matter; rather, the relative values between each color matters. That will change the scaling of the total scores.
