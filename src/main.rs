@@ -20,6 +20,7 @@ fn main() {
                 break;
             }
         }
+        println!("---");
         parse_results(&results);
     } else {
         for filename in args {
@@ -33,7 +34,8 @@ fn main() {
 
 fn parse_results(results: &str) {
     let max_rounds = 7;
-    let decay_factor = 100.0 / max_rounds as f64;
+    let decay_factor = 49.0 / max_rounds as f64;
+    let scale_factor = 100.0 / 420.0;
 
     let mut lines = results.lines();
     lines.next(); // discard "Connections"
@@ -42,15 +44,15 @@ fn parse_results(results: &str) {
 
     let mut total = 0.0;
     for (idx, line) in lines.enumerate() {
-        let round_score = score_round(line, max_rounds - idx, decay_factor);
+        let round_score = score_round(line, max_rounds - idx, decay_factor, scale_factor);
         println!("{line} - {round_score:.2}");
         total += round_score;
     }
     println!("Total: {total:.2}");
 }
 
-fn score_round(line: &str, round: usize, decay_factor: f64) -> f64 {
-    let round_factor = decay_factor * round as f64;
+fn score_round(line: &str, round: usize, decay_factor: f64, scale_factor: f64) -> f64 {
+    let round_factor = scale_factor * decay_factor * round as f64;
     if purple_found(line) {
         4.0 * round_factor
     } else if blue_found(line) {
