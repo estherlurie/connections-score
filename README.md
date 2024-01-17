@@ -1,5 +1,15 @@
 # Connections Score
-
+```
+Puzzle #220
+🟩🟦🟨🟪 - 0.00
+🟩🟦🟨🟩 - 0.00
+🟩🟩🟩🟩 - 16.67
+🟦🟨🟪🟨 - 0.00
+🟨🟨🟨🟨 - 5.00
+🟦🟦🟦🟦 - 10.00
+🟪🟪🟪🟪 - 6.67
+Total: 38.33
+```
 ## Running the program
 Rust must be installed on your machine. If you don't have it, [install instructions are here](https://www.rust-lang.org/tools/install).
 ### With stdin
